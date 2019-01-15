@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -8,15 +9,27 @@ public class testGrupoEsoft {
 		// Read rows and columns for the matrix
 		int n=-1, m=-1;
 		Scanner in = new Scanner(System.in);
-		System.out.println("Please enter the number of rows and columns of a matriz (rows and columns greather than 2)");
+		System.out.println("Let's create a matrix\n");
 		do {
+			System.out.printf("Enter the number of rows (greater than 2).\n");
+			System.out.print("Rows: ");
+			while(!in.hasNextInt()) {
+				System.out.println("This is not an integer.");
 				System.out.print("Rows: ");
-				n = in.nextInt();
+				in.next();
+			}
+			n = in.nextInt();
+		} while (!(n>2));
+		do {	
+			System.out.printf("Enter the number of columns (greater than 2).\n");
+			System.out.print("Columns: ");
+			while(!in.hasNextInt()) {
+				System.out.println("This is not an integer.");
 				System.out.print("Columns: ");
-				m = in.nextInt();
-				if(!(n>2 && m>2))
-					System.out.printf("\nError: integer is not greather than 2!\n");
-		}while(!(n>2 && m>2));
+				in.next();
+			}
+			m = in.nextInt();
+		} while (!(m>2));
 		System.out.printf("\nmatrix: %dx%d\n",n,m);
 		
 		
