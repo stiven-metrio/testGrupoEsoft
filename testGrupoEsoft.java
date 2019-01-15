@@ -2,7 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class testGrupoEsoft {
+public class TestGrupoEsoft {
 
 	public static void main(String[] args) {
 		
