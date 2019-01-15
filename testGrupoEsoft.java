@@ -6,7 +6,7 @@ public class testGrupoEsoft {
 
 	public static void main(String[] args) {
 		
-		// Read rows and columns for the matrix
+		// Read rows and columns for the array
 		int n=-1, m=-1;
 		Scanner in = new Scanner(System.in);
 		System.out.println("Let's create a matrix\n");
@@ -33,14 +33,14 @@ public class testGrupoEsoft {
 		System.out.printf("\nmatrix: %dx%d\n",n,m);
 		
 		
-		// Create array nxm
+		// Create n x m array
 		int matrix[][] = new int[n][m];
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				matrix[i][j] = ThreadLocalRandom.current().nextInt(1, n*m + 1);;
 			}
 		}
-		// print matrix
+		// print array
 		for (int i = 0; i < n; i++) {
 		    for (int j = 0; j < m; j++) {
 		        System.out.print(matrix[i][j] + "\t");
@@ -49,7 +49,7 @@ public class testGrupoEsoft {
 		}
 		
 		
-		// Calculate total of columns
+		// Calculate total for every column
 		int totalColumns[] = new int[m];
 	    System.out.println("--- Total Columns ---");
 	    for (int j = 0; j < m; j++) {
@@ -62,20 +62,27 @@ public class testGrupoEsoft {
 
 		// Average even columns
 	    int columnsCounter = 0, sumOddColumns = 0;
-	    float averageOddColumns;
+	    float averageEvenColumns;
 	    for (int j = 1; j < m; j+=2) {
 	    	sumOddColumns = sumOddColumns + totalColumns[j];
 	    	columnsCounter++;
 	    }
-	    averageOddColumns = (float)sumOddColumns / (float)columnsCounter;
-	    System.out.printf("\nAverage even columns: %.2f\n",averageOddColumns);
+	    averageEvenColumns = (float)sumOddColumns / (float)columnsCounter;
+	    System.out.printf("\nAverage even columns: %.2f\n",averageEvenColumns);
 	    
-	    // Columns with total greater than $averageOddColumns
+	    // Columns with total greater than $averageOevenColumns
 	    int columnsGreaterAverage = 0;
 	    for (int j = 0; j < m; j++) {
-	    	if(totalColumns[j] > averageOddColumns)
+	    	if(totalColumns[j] > averageEvenColumns)
 	    	columnsGreaterAverage++;
 	    }
-	    System.out.printf("Columns with a total greater than %.2f : %d",averageOddColumns,columnsGreaterAverage);
+	    System.out.printf("Columns with a total greater than %.2f : %d",averageEvenColumns,columnsGreaterAverage);
 	}
 }
+
+/** In the conditions, it is asked to consider the average of even columns
+ * In the Example, the average for odd columns is calculated
+ * In the example "Cantidad de columnas cuyo total es mayor que 12 = 1" is not true
+ * 
+ * IMPORTANT: I counted the columns whose total is greater than the average of odd columns.  
+ */
